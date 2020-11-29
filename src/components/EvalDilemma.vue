@@ -4,7 +4,7 @@
     <p>In this section, you can evaluate whether dilemma is intersting enough. 
       If dilemma get enough number of votes and likes, it will be enrolled in a Quiz section</p>
       <p>{{problem()}}</p>
-      <button @click="yes()">YES</button><button @click="no()">NO</button>
+      <button @click="yes()">UPVOTE</button><button @click="no()">DOWNVOTE</button>
   </div>
 </template>
 

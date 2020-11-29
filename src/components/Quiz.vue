@@ -124,7 +124,7 @@ export default {
       this.answer = true
       this.stage1=true
       this.stage3=false
-      if (this.number==10) {
+      if (this.number==9) {
         this.current=false
         this.final=true
       }
