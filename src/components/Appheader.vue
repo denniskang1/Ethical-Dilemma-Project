@@ -1,7 +1,10 @@
 <template>
-  <router-link to="/Quiz">Quiz</router-link>
-  <router-link to="/OfferDilemma">OfferDilemma</router-link>
-  <router-link to="/EvalDilemma">EvalDilemma</router-link>
+  
+  <div>
+    <router-link to="/Lobby"><h1>Ethical-Dilemma</h1></router-link>
+    <router-view></router-view>
+  </div>
+  
 </template>
 
 <script>
@@ -10,6 +13,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="css" scoped>
+a{
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+h1{
+  background: linear-gradient(to right, yellow, green);
+}
 </style>

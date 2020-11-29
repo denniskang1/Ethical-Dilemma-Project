@@ -1,19 +1,26 @@
 <template>
-  <button @click="click()">click</button>
-  <Appheader/>
-  <router-view></router-view>
-
+  <div>
+    <Appheader/>
+    
+  </div>
+  <!--<router-view></router-view>-->
 </template>
 
 <script>
 import Appheader from './components/Appheader.vue'
-import db from './components/firebaseinit'
+//import db from './components/firebaseinit'
 
 export default {
+  /*computed: {
+    user() {
+      return this.$route
+    }
+  },*/
   components: {
     Appheader
   },
   methods: {
+    /*
     click() {
       db.collection('candidates').add({
         dilemma: "hi",
@@ -26,7 +33,7 @@ export default {
       .catch(function(error) {
         console.error("Error adding document: ", error);
       });
-    }
+    }*/
   }
   
 }
