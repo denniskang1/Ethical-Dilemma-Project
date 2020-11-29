@@ -24,7 +24,7 @@ export default {
     submit(offer) {
       db.collection('candidates').add({
         dilemma: offer,
-        downvote: 0,
+        total: 0,
         upvote: 0
       })
       alert("your offer is successfully submitted")

@@ -46,8 +46,7 @@ export default {
       opinion: "",
       show: false,
       dilemmaList: [{
-        Number: 0,
-        comment: [],
+        comments: [],
         dilemma: "",
         no: 0,
         yes: 0
@@ -66,7 +65,6 @@ export default {
   },
   async created() {
     db.collection('dilemmas')
-      .orderBy('Number', 'desc')
       .onSnapshot(snapshot => {
         this.dilemmaList = snapshot.docs
           .map(doc => {
