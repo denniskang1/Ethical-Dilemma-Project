@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <Appheader/>
+    
   </div>
+  <!--<router-view></router-view>-->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Appheader from './components/Appheader.vue'
+//import db from './components/firebaseinit'
 
 export default {
-  name: 'App',
+  /*computed: {
+    user() {
+      return this.$route
+    }
+  },*/
   components: {
-    HelloWorld
+    Appheader
+  },
+  methods: {
+    /*
+    click() {
+      db.collection('candidates').add({
+        dilemma: "hi",
+        downvote: 10,
+        upvote: 20
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+    }*/
   }
+  
 }
 </script>
 
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
