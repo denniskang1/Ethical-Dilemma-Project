@@ -27,7 +27,7 @@ export default {
         downvote: 0,
         upvote: 0
       })
-      alert("your offer is successfully submitted")
+      this.$alert("Successfully submitted",'','success');
       this.offer = ""
     }
   }

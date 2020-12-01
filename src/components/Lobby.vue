@@ -1,37 +1,47 @@
 <template>
-  <div id = "menu">
-    <ol>
-      <li><router-link to="/Quiz">Quiz</router-link></li>
-      <li><router-link to="/OfferDilemma">Offer Dilemma</router-link></li>
-      <li><router-link to="/EvalDilemma">Evaluate Dilemma</router-link></li>
-    </ol>
+  <div id="menu">
+    <radial-menu
+      style="margin: auto; margin-top: 300px; background-color: white"
+      :itemSize="50"
+      :radius="120"
+      :angle-restriction="180">
+        <radial-menu-item 
+          v-for="(item, index) in items" 
+          :key="index" 
+          style="background-color: white" 
+          @click="() => handleClick(item)">
+          <span>{{item}}</span>
+        </radial-menu-item>
+      </radial-menu>
   </div>
 </template>
 
 <script>
+import { RadialMenu,  RadialMenuItem } from 'vue-radial-menu'
+
 export default {
-    data(){
-        return {
-        }
+  name: 'menu',
+  components: {
+    RadialMenu,
+    RadialMenuItem
+  },
+  data () {
+    return {
+      items: ['Quiz', 'Offer Dilemma', 'Evaluate Dilemma'],
     }
+  },
+  methods: {
+    handleClick (item) {
+      if (item == 'Quiz'){
+        this.$router.push('/Quiz')
+      }
+      else if(item == 'Offer Dilemma'){
+        this.$router.push('/OfferDilemma')
+      }
+      else{
+        this.$router.push('/EvalDilemma')
+      }
+    }
+  }
 }
 </script>
-
-<style lang="css" scoped>
-a{
-    text-decoration: none;
-    font-size: large;
-    color: black;
-    
-}
-ol{
-    text-align: center;
-    padding-right: 40px;
-    list-style-type: none;
-}
-li{
-    border: 2px solid gray;
-    margin: 30px;
-}
-
-</style>
