@@ -1,11 +1,6 @@
 <template>
   <div id="top">
     <h2>Dilemma Quiz</h2>
-<<<<<<< Updated upstream
-    <p>{{problem()}}</p>
-    <span id="answer" v-show="answer">
-      <button @click="yes()">YES</button><button @click="no()">NO</button>
-=======
     <div class="lbz-card" id="basic">
     <p id="divider">{{problem()}}</p>
     </div>
@@ -13,7 +8,6 @@
     <span id="example" v-if="stage1">
     <span id="answer" v-show="answer" >
       <lbz-button id="generic" @click="yes()">YES</lbz-button><lbz-button id="generic" click="no()">NO</lbz-button>
->>>>>>> Stashed changes
     </span>
     
     <p>Share your opinion</p>
@@ -21,12 +15,6 @@
       <textarea name="comment" cols="30" rows="10" v-model="opinion"></textarea>
       <lbz-button id="send" @click="send(opinion)">Send</lbz-button>
     </div>
-<<<<<<< Updated upstream
-    <button id="result" @click="result()">Show results</button>
-    <button id="next" @click="next()">next</button>
-    <span v-if="number !== 0"><button id="prev" @click="prev()">prev</button></span>
-    <div v-show="show">123</div>
-=======
     
     <lbz-button id="result" @click="result()">next</lbz-button>
     
@@ -44,7 +32,6 @@
 {{comment()}}
 </pre>
     </span>
->>>>>>> Stashed changes
     
   </div>
 </template>
@@ -53,9 +40,6 @@
 
 import db from './firebaseinit'
 import firebase from 'firebase/app'
-<<<<<<< Updated upstream
-
-=======
 import '@lbzui/vue/lib/lbzui.css'
 import LBZUI from '@lbzui/vue'
 import Vue from 'vue'
@@ -64,7 +48,6 @@ Vue.use(LBZUI, {
   dense: false,
   ripple: true
 })
->>>>>>> Stashed changes
 export default {
   data() {
     return {
@@ -123,18 +106,12 @@ export default {
     next() {
       this.number = this.number + 1
       this.answer = true
-<<<<<<< Updated upstream
-    },
-    prev() {
-      this.number = this.number - 1
-=======
       this.stage1=true
       this.stage3=false
       if (this.number==10) {
         this.current=false
         this.final=true
       }
->>>>>>> Stashed changes
     },
     problem() {
       return this.dilemmaList[this.number]["dilemma"]
