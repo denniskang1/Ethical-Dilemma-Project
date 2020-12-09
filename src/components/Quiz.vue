@@ -7,9 +7,10 @@
     <p></p>
     <span id="example" v-if="stage1">
     <span id="answer" v-show="answer" >
-      <lbz-button id="generic" @click="yes()">YES</lbz-button><lbz-button id="generic" click="no()">NO</lbz-button>
+      <lbz-button id="generic" @click="yes()">YES</lbz-button><lbz-button id="generic" @click="no()">NO</lbz-button>
     </span>
-    
+    </span>
+    <span id="example2" v-if="stage2">
     <p>Share your opinion</p>
     <div>
       <textarea name="comment" cols="30" rows="10" v-model="opinion"></textarea>
@@ -54,14 +55,18 @@ export default {
       opinion: "",
       show: false,
       dilemmaList: [{
-        Number: 0,
-        comment: [],
+        comments: [],
         dilemma: "",
         no: 0,
         yes: 0
       }],
       number: 0,
-      answer: true
+      answer: true,
+      stage1: true,
+      stage2: false,
+      stage3: false,
+      final: false,
+      current: true
     }
   },
   computed: {
@@ -69,7 +74,6 @@ export default {
   },
   async created() {
     db.collection('dilemmas')
-      .orderBy('Number', 'desc')
       .onSnapshot(snapshot => {
         this.dilemmaList = snapshot.docs
           .map(doc => {
@@ -88,6 +92,8 @@ export default {
           yes: firebase.firestore.FieldValue.increment(1)
         })
       this.answer = false
+      this.stage1 = false
+      this.stage2=true
     },
     no() {
       db.collection('dilemmas')
@@ -96,19 +102,38 @@ export default {
           no: firebase.firestore.FieldValue.increment(1)
         })
       this.answer = false
+      this.stage1 = false
+      this.stage2=true
     },
-    send() {
-
+    send(form) {
+      var sArray=this.dilemmaList[this.number]["comments"]
+      sArray.push(form)
+       db.collection('dilemmas')
+        .doc(this.dilemmaList[this.number].id).update({
+          comments: sArray
+        })
+      
     },
     result() {
       this.show = true
+      this.stage2=false
+      this.stage3=true
+      
+    },
+    stat() {
+      return Math.round(this.dilemmaList[this.number]["yes"]/(this.dilemmaList[this.number]["yes"]+this.dilemmaList[this.number]["no"])*100)+"% of people agree with you."
+    },
+    comment() {
+      var string=""
+      this.dilemmaList[this.number]["comments"].forEach(k=>{string=string+k+'\n'})
+      return string
     },
     next() {
       this.number = this.number + 1
       this.answer = true
       this.stage1=true
       this.stage3=false
-      if (this.number==10) {
+      if (this.number==9) {
         this.current=false
         this.final=true
       }
