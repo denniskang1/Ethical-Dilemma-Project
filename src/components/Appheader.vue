@@ -1,8 +1,9 @@
 <template>
-  
   <div>
+  <div id="hello">
     <router-link to="/Lobby"><h1>Ethical-Dilemma</h1></router-link>
     <router-view></router-view>
+  </div>
   </div>
   
 </template>
@@ -21,5 +22,12 @@ a{
 }
 h1{
   background: linear-gradient(to right, yellow, green);
+  
+}
+#hello{
+  background:#f5f5f5;
+  width: 100%;
+  height: 100vh;
+  padding-top: 1px;
 }
 </style>

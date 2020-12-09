@@ -1,28 +1,70 @@
 <template>
-  <div>
+  <div id="top">
     <h2>Dilemma Quiz</h2>
+<<<<<<< Updated upstream
     <p>{{problem()}}</p>
     <span id="answer" v-show="answer">
       <button @click="yes()">YES</button><button @click="no()">NO</button>
+=======
+    <div class="lbz-card" id="basic">
+    <p id="divider">{{problem()}}</p>
+    </div>
+    <p></p>
+    <span id="example" v-if="stage1">
+    <span id="answer" v-show="answer" >
+      <lbz-button id="generic" @click="yes()">YES</lbz-button><lbz-button id="generic" click="no()">NO</lbz-button>
+>>>>>>> Stashed changes
     </span>
     
     <p>Share your opinion</p>
     <div>
       <textarea name="comment" cols="30" rows="10" v-model="opinion"></textarea>
-      <button id="send" @click="send(opinion)">Send</button>
+      <lbz-button id="send" @click="send(opinion)">Send</lbz-button>
     </div>
+<<<<<<< Updated upstream
     <button id="result" @click="result()">Show results</button>
     <button id="next" @click="next()">next</button>
     <span v-if="number !== 0"><button id="prev" @click="prev()">prev</button></span>
     <div v-show="show">123</div>
+=======
+    
+    <lbz-button id="result" @click="result()">next</lbz-button>
+    
+    </span>
+    <span id="example3" v-if="stage3">
+    
+{{stat()}}
+<span id="example4" v-if="current">
+      <lbz-button id="next" @click="next()">next</lbz-button>
+      </span>
+      <span id="example5" v-if="final">
+      <li><router-link to="/Lobby">Finish</router-link></li>
+      </span>
+      <pre>
+{{comment()}}
+</pre>
+    </span>
+>>>>>>> Stashed changes
     
   </div>
 </template>
 
 <script>
+
 import db from './firebaseinit'
 import firebase from 'firebase/app'
+<<<<<<< Updated upstream
 
+=======
+import '@lbzui/vue/lib/lbzui.css'
+import LBZUI from '@lbzui/vue'
+import Vue from 'vue'
+
+Vue.use(LBZUI, {
+  dense: false,
+  ripple: true
+})
+>>>>>>> Stashed changes
 export default {
   data() {
     return {
@@ -81,9 +123,18 @@ export default {
     next() {
       this.number = this.number + 1
       this.answer = true
+<<<<<<< Updated upstream
     },
     prev() {
       this.number = this.number - 1
+=======
+      this.stage1=true
+      this.stage3=false
+      if (this.number==10) {
+        this.current=false
+        this.final=true
+      }
+>>>>>>> Stashed changes
     },
     problem() {
       return this.dilemmaList[this.number]["dilemma"]
@@ -92,24 +143,45 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css" scoped>
 /*
-#send {
-  position: absolute;
-  left: 262px;
-  
-}
+
 #yes {
   position: absolute;
   left: 100px;
   right: 100px;
 }*/
+
 #result {
   position: relative;
+  background: #D0d0d0;
+  color: #000;
 }
 #answer {
   position: relative;
   left: 200px;
+}
+#generic {
+  background: #D0d0d0;
+  color: #000;
+}
+#send {
+  background: #D0d0d0;
+  color: #000;
+}
+#next {
+  background: #D0d0d0;
+  color: #000;
+}
+#basic {
+  left: 200px;
+  
+}
+#divider{
+  margin:20px;
+}
+#top {
+  margin:20px
 }
 /*
 #next {
