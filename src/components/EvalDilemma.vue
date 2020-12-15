@@ -8,7 +8,7 @@
     </div>
       <p></p>
       <span id="answer" >
-      <lbz-button id="generic" @click="yes()">YES</lbz-button><lbz-button id="generic" @click="no()">NO</lbz-button>
+      <lbz-button id="generic" @click="yes()">AGREE</lbz-button><lbz-button id="generic" @click="no()">DISAGREE</lbz-button>
       </span>
   </div>
 </template>
