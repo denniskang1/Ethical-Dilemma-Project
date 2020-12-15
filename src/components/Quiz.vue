@@ -45,6 +45,8 @@ import '@lbzui/vue/lib/lbzui.css'
 import LBZUI from '@lbzui/vue'
 import Vue from 'vue'
 
+
+
 Vue.use(LBZUI, {
   dense: false,
   ripple: true
@@ -81,8 +83,9 @@ export default {
               id: doc.id,
               ...doc.data()
             }
-          }).reverse()
+          }).reverse().sort(() => Math.random() - 0.5)
       })
+    
   },
   methods: {
     yes() {
