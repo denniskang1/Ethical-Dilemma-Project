@@ -10,4 +10,4 @@ npm i
 npm run serve
 ```
 
-For inquiry/feedback about the application contact denniskang1@gmail.com
+For inquiry/feedback about the application, contact denniskang1@gmail.com
