@@ -68,7 +68,10 @@ export default {
       stage2: false,
       stage3: false,
       final: false,
-      current: true
+      current: true,
+      yess: true,
+      sArray:[],
+      sent: false
     }
   },
   computed: {
@@ -89,32 +92,25 @@ export default {
   },
   methods: {
     yes() {
-      db.collection('dilemmas')
-        .doc(this.dilemmaList[this.number].id)
-        .update({
-          yes: firebase.firestore.FieldValue.increment(1)
-        })
+      this.yess=true
+      
       this.answer = false
       this.stage1 = false
       this.stage2=true
     },
     no() {
-      db.collection('dilemmas')
-        .doc(this.dilemmaList[this.number].id)
-        .update({
-          no: firebase.firestore.FieldValue.increment(1)
-        })
+      
+      this.yess=false
       this.answer = false
       this.stage1 = false
       this.stage2=true
     },
     send(form) {
-      var sArray=this.dilemmaList[this.number]["comments"]
-      sArray.push(form)
-       db.collection('dilemmas')
-        .doc(this.dilemmaList[this.number].id).update({
-          comments: sArray
-        })
+      this.sArray=this.dilemmaList[this.number]["comments"]
+      this.sArray.push(form)
+      this.sent=true;
+       
+      
       
     },
     result() {
@@ -132,6 +128,29 @@ export default {
       return string
     },
     next() {
+      
+      var idn=this.dilemmaList[this.number].id
+      if (this.sent==true) {
+        db.collection('dilemmas')
+        .doc(this.dilemmaList[this.number].id).update({
+          comments: this.sArray
+        })
+        this.sent=false;
+      }
+      if (this.yess===true) {
+        db.collection('dilemmas')
+        .doc(idn)
+        .update({
+          yes: firebase.firestore.FieldValue.increment(1)
+        })
+      }
+      else {
+        db.collection('dilemmas')
+        .doc(idn)
+        .update({
+          no: firebase.firestore.FieldValue.increment(1)
+        })
+      }
       this.number = this.number + 1
       this.answer = true
       this.stage1=true
