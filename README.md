@@ -1,24 +1,13 @@
 # ethical-dilemma
 
-## Project setup
+## Installing Project Requirements
 ```
-npm install
+npm i
 ```
 
-### Compiles and hot-reloads for development
+### Running the project
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+For inquiry/feedback about the application contact denniskang1@gmail.com
